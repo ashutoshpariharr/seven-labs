@@ -111,8 +111,9 @@ const Navigation = () => {
                     onHoverStart={() => item.subItems && setIsServicesOpen(true)}
                     onHoverEnd={() => item.subItems && setIsServicesOpen(false)}
                   >
-                    <motion.a
-                      href={item.path}
+                    {/* <motion.a */}
+                    <Link
+                      to={item.path}
                       className={`text-gray-700 hover:text-blue-600 font-medium flex items-center ${activeItem === item.name ? 'text-blue-600' : ''
                         }`}
                       onClick={(e) => {
@@ -123,7 +124,8 @@ const Navigation = () => {
                     >
                       {item.name}
                       {item.subItems && <ChevronDown className="ml-1 w-4 h-4" />}
-                    </motion.a>
+                      {/* </motion.a> */}
+                    </Link>
 
                     {/* Dropdown for Services */}
                     {item.subItems && (
@@ -136,9 +138,10 @@ const Navigation = () => {
                             className="absolute left-0 mt-2 w-64 bg-white rounded-lg shadow-xl py-2 z-50"
                           >
                             {item.subItems.map((subItem) => (
-                              <motion.a
+                              // <motion.a
+                              <Link
                                 key={subItem.name}
-                                href={subItem.path}
+                                to={subItem.path}
                                 className="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600"
                                 onClick={(e) => {
                                   e.preventDefault();
@@ -147,7 +150,7 @@ const Navigation = () => {
                                 whileHover={{ x: 5 }}
                               >
                                 {subItem.name}
-                              </motion.a>
+                              </Link>
                             ))}
                           </motion.div>
                         )}
@@ -204,8 +207,8 @@ const Navigation = () => {
                     exit={{ x: -20, opacity: 0 }}
                     className="py-2"
                   >
-                    <a
-                      href={item.path}
+                    <Link
+                      to={item.path}
                       className="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg"
                       onClick={(e) => {
                         e.preventDefault();
@@ -213,7 +216,7 @@ const Navigation = () => {
                       }}
                     >
                       {item.name}
-                    </a>
+                    </Link>
                     {item.subItems && activeItem === item.name && (
                       <motion.div
                         initial={{ opacity: 0 }}
@@ -221,9 +224,10 @@ const Navigation = () => {
                         className="pl-8 space-y-2 mt-2"
                       >
                         {item.subItems.map((subItem) => (
-                          <motion.a
+                          // <motion.a
+                          <Link
                             key={subItem.name}
-                            href={subItem.path}
+                            to={subItem.path}
                             className="block py-2 text-gray-600 hover:text-blue-600"
                             onClick={(e) => {
                               e.preventDefault();
@@ -232,7 +236,8 @@ const Navigation = () => {
                             whileHover={{ x: 5 }}
                           >
                             {subItem.name}
-                          </motion.a>
+                            {/* </.a> */}
+                          </Link>
                         ))}
                       </motion.div>
                     )}
@@ -243,9 +248,11 @@ const Navigation = () => {
                   animate={{ opacity: 1 }}
                   className="p-4 mt-2 bg-blue-50 rounded-lg"
                 >
-                  <button className="w-full py-2 bg-blue-600 text-white rounded-lg font-medium">
-                    Get Started
-                  </button>
+                  <Link to="/contact">
+                    <button className="w-full py-2 bg-blue-600 text-white rounded-lg font-medium">
+                      Get Started
+                    </button>
+                  </Link>
                 </motion.div>
               </motion.div>
             )}
