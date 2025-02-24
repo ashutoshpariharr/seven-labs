@@ -4,6 +4,7 @@ import FeaturesSection from './FeaturesSection';
 import TestimonialsSection from './TestimonialsSection';
 import { CTASection } from './AwardsSection';
 import { Link } from 'react-router-dom';
+import LogoMarquee from './LogoMarquee';
 
 const HeroSection = () => {
   return (
@@ -169,7 +170,8 @@ const HeroSection = () => {
       </motion.div>
       <FeaturesSection />
       <CTASection />
-      <TestimonialsSection />
+      {/* <TestimonialsSection /> */}
+      <LogoMarquee />
     </>
   );
 };
