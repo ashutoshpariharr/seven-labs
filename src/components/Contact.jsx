@@ -1,0 +1,293 @@
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+import { 
+  Mail, 
+  Phone, 
+  MapPin, 
+  Clock, 
+  Send, 
+  MessageSquare, 
+  Users, 
+  Building,
+  ArrowRight,
+  CheckCircle
+} from 'lucide-react';
+
+const ContactPage = () => {
+  const [formStatus, setFormStatus] = useState('idle');
+  const [activeTab, setActiveTab] = useState('message');
+
+  const fadeInUpVariants = {
+    initial: { y: 30, opacity: 0 },
+    animate: { y: 0, opacity: 1 },
+    transition: { duration: 0.5 }
+  };
+
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+      {/* Hero Section */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        className="relative bg-blue-600 text-white py-24 overflow-hidden"
+      >
+        {/* Animated Background Elements */}
+        <div className="absolute inset-0">
+          <motion.div
+            animate={{ 
+              rotate: 360,
+              scale: [1, 1.2, 1],
+            }}
+            transition={{ 
+              duration: 20,
+              repeat: Infinity,
+              ease: "linear"
+            }}
+            className="absolute -right-1/4 -top-1/4 w-1/2 h-1/2 bg-blue-400 rounded-full opacity-20 blur-3xl"
+          />
+          <motion.div
+            animate={{ 
+              rotate: -360,
+              scale: [1, 1.3, 1],
+            }}
+            transition={{ 
+              duration: 25,
+              repeat: Infinity,
+              ease: "linear"
+            }}
+            className="absolute -left-1/4 -bottom-1/4 w-1/2 h-1/2 bg-blue-500 rounded-full opacity-20 blur-3xl"
+          />
+        </div>
+
+        <div className="relative max-w-7xl mx-auto px-4 text-center">
+          <motion.h1 
+            initial={{ y: 30, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            className="text-4xl md:text-5xl font-bold mb-6"
+          >
+            Let's Start a Conversation
+          </motion.h1>
+          <motion.p
+            initial={{ y: 30, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.2 }}
+            className="text-xl text-blue-100 max-w-2xl mx-auto"
+          >
+            We're here to help and answer any questions you might have
+          </motion.p>
+        </div>
+      </motion.div>
+
+      {/* Main Content */}
+      <div className="max-w-7xl mx-auto px-4 py-16">
+        <div className="grid md:grid-cols-3 gap-8">
+          {/* Contact Information */}
+          <motion.div
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+            variants={fadeInUpVariants}
+            className="md:col-span-1 space-y-8"
+          >
+            {/* Contact Cards */}
+            {[
+              { 
+                icon: Phone, 
+                title: 'Call Us',
+                content: '+1 (555) 123-4567',
+                subContent: 'Mon-Fri from 9am to 6pm EST'
+              },
+              {
+                icon: Mail,
+                title: 'Email Us',
+                content: 'contact@7-labs.com',
+                subContent: "We'll respond within 24 hours"
+              },
+              {
+                icon: MapPin,
+                title: 'Visit Us',
+                content: '123 Business Avenue',
+                subContent: 'New York, NY 10001'
+              }
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                whileHover={{ y: -5 }}
+                className="bg-white rounded-xl p-6 shadow-lg"
+              >
+                <div className="flex items-start">
+                  <div className="flex-shrink-0">
+                    <div className="p-3 bg-blue-50 rounded-lg">
+                      <item.icon className="w-6 h-6 text-blue-600" />
+                    </div>
+                  </div>
+                  <div className="ml-4">
+                    <h3 className="text-lg font-semibold text-gray-900">{item.title}</h3>
+                    <p className="mt-1 text-gray-600">{item.content}</p>
+                    <p className="mt-1 text-sm text-gray-500">{item.subContent}</p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+
+            {/* Social Proof */}
+            <div className="bg-gray-50 rounded-xl p-6 mt-8">
+              <h3 className="text-lg font-semibold text-gray-900 mb-4">Why Choose Us</h3>
+              {[
+                '24/7 Customer Support',
+                'Industry Experts',
+                'Guaranteed Response',
+                'Secure Communication'
+              ].map((item, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ x: -20, opacity: 0 }}
+                  whileInView={{ x: 0, opacity: 1 }}
+                  transition={{ delay: index * 0.1 }}
+                  className="flex items-center space-x-2 mt-3"
+                >
+                  <CheckCircle className="w-5 h-5 text-green-500" />
+                  <span className="text-gray-600">{item}</span>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Contact Form Section */}
+          <motion.div
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+            variants={fadeInUpVariants}
+            className="md:col-span-2"
+          >
+            <div className="bg-white rounded-2xl shadow-xl p-8">
+              {/* Form Tabs */}
+              <div className="flex space-x-4 mb-8">
+                {[
+                  { id: 'message', icon: MessageSquare, label: 'Send Message' },
+                  { id: 'meeting', icon: Users, label: 'Schedule Meeting' },
+                  { id: 'quote', icon: Building, label: 'Get Quote' }
+                ].map((tab) => (
+                  <motion.button
+                    key={tab.id}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    onClick={() => setActiveTab(tab.id)}
+                    className={`flex items-center px-4 py-2 rounded-lg ${
+                      activeTab === tab.id
+                        ? 'bg-blue-50 text-blue-600'
+                        : 'text-gray-600 hover:bg-gray-50'
+                    }`}
+                  >
+                    <tab.icon className="w-4 h-4 mr-2" />
+                    {tab.label}
+                  </motion.button>
+                ))}
+              </div>
+
+              {/* Contact Form */}
+              <form className="space-y-6">
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      First Name
+                    </label>
+                    <input
+                      type="text"
+                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Last Name
+                    </label>
+                    <input
+                      type="text"
+                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Email Address
+                  </label>
+                  <input
+                    type="email"
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Subject
+                  </label>
+                  <select className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all">
+                    <option>General Inquiry</option>
+                    <option>Business Consultation</option>
+                    <option>Service Quote</option>
+                    <option>Partnership Opportunity</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Message
+                  </label>
+                  <textarea
+                    rows={6}
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                  />
+                </div>
+
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  type="submit"
+                  className="w-full bg-blue-600 text-white py-4 px-6 rounded-lg font-medium flex items-center justify-center space-x-2 hover:bg-blue-700 transition-colors"
+                >
+                  <Send className="w-5 h-5" />
+                  <span>Send Message</span>
+                </motion.button>
+
+                {formStatus === 'success' && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="p-4 bg-green-50 text-green-600 rounded-lg flex items-center"
+                  >
+                    <CheckCircle className="w-5 h-5 mr-2" />
+                    Message sent successfully!
+                  </motion.div>
+                )}
+              </form>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Map Section */}
+        <motion.div
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true }}
+          variants={fadeInUpVariants}
+          className="mt-16"
+        >
+          <div className="rounded-2xl overflow-hidden shadow-xl">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387193.30596073366!2d-74.25986682425766!3d40.69714941680757!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2s!4v1645564563586!5m2!1sen!2s"
+              width="100%"
+              height="450"
+              style={{ border: 0 }}
+              allowFullScreen=""
+              loading="lazy"
+            ></iframe>
+          </div>
+        </motion.div>
+      </div>
+    </div>
+  )
+};
+
+export default ContactPage;
