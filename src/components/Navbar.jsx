@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Phone, Mail, ChevronDown } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom'; // Import useNavigate
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeItem, setActiveItem] = useState('Home');
   const [scrolled, setScrolled] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const navigate = useNavigate(); // Use the useNavigate hook
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,8 +20,9 @@ const Navigation = () => {
     const path = window.location.pathname;
     const currentPath = path === '/' ? 'Home' : path.substring(1);
     const matchingItem = navItems.find(
-      item => item.path === path ||
-        (item.name.toLowerCase() === currentPath.toLowerCase())
+      (item) =>
+        item.path === path ||
+        item.name.toLowerCase() === currentPath.toLowerCase()
     );
     if (matchingItem) {
       setActiveItem(matchingItem.name);
@@ -39,19 +41,16 @@ const Navigation = () => {
         { name: 'Virtual CFO', path: '/services/virtual-cfo' },
         { name: 'Business Optimization', path: '/services/business-optimization' },
         { name: 'Internal Audits', path: '/services/internal-audits' },
-        { name: 'Financial Controls', path: '/services/financial-controls' }
-      ]
+        { name: 'Financial Controls', path: '/services/financial-controls' },
+      ],
     },
     { name: 'Career', path: '/career' },
-    // { name: 'Contact', path: '/contact' },
   ];
 
   const handleNavigation = (itemName, path) => {
     setActiveItem(itemName);
     setIsOpen(false);
-    // If you're using client-side routing (e.g., Next.js), you might want to use the router.push here
-    // For now, we'll use regular navigation
-    window.location.href = path;
+    navigate(path); // Use navigate instead of window.location.href
   };
 
   return (
@@ -86,8 +85,9 @@ const Navigation = () => {
       <motion.nav
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        className={`fixed w-full bg-white z-50 transition-all duration-300 ${scrolled ? 'shadow-lg py-2' : 'py-4'
-          }`}
+        className={`fixed w-full bg-white z-50 transition-all duration-300 ${
+          scrolled ? 'shadow-lg py-2' : 'py-4'
+        }`}
       >
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex justify-between items-center">
@@ -111,11 +111,11 @@ const Navigation = () => {
                     onHoverStart={() => item.subItems && setIsServicesOpen(true)}
                     onHoverEnd={() => item.subItems && setIsServicesOpen(false)}
                   >
-                    {/* <motion.a */}
                     <Link
                       to={item.path}
-                      className={`text-gray-700 hover:text-blue-600 font-medium flex items-center ${activeItem === item.name ? 'text-blue-600' : ''
-                        }`}
+                      className={`text-gray-700 hover:text-blue-600 font-medium flex items-center ${
+                        activeItem === item.name ? 'text-blue-600' : ''
+                      }`}
                       onClick={(e) => {
                         e.preventDefault();
                         handleNavigation(item.name, item.path);
@@ -124,7 +124,6 @@ const Navigation = () => {
                     >
                       {item.name}
                       {item.subItems && <ChevronDown className="ml-1 w-4 h-4" />}
-                      {/* </motion.a> */}
                     </Link>
 
                     {/* Dropdown for Services */}
@@ -138,7 +137,6 @@ const Navigation = () => {
                             className="absolute left-0 mt-2 w-64 bg-white rounded-lg shadow-xl py-2 z-50"
                           >
                             {item.subItems.map((subItem) => (
-                              // <motion.a
                               <Link
                                 key={subItem.name}
                                 to={subItem.path}
@@ -224,7 +222,6 @@ const Navigation = () => {
                         className="pl-8 space-y-2 mt-2"
                       >
                         {item.subItems.map((subItem) => (
-                          // <motion.a
                           <Link
                             key={subItem.name}
                             to={subItem.path}
@@ -236,7 +233,6 @@ const Navigation = () => {
                             whileHover={{ x: 5 }}
                           >
                             {subItem.name}
-                            {/* </.a> */}
                           </Link>
                         ))}
                       </motion.div>
