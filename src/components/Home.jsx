@@ -171,7 +171,7 @@ const HeroSection = () => {
       <FeaturesSection />
       <CTASection />
       {/* <TestimonialsSection /> */}
-      <LogoMarquee />
+      {/* <LogoMarquee /> */}
     </>
   );
 };

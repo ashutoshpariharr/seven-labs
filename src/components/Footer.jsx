@@ -1,12 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { 
-  Mail, 
-  Phone, 
-  MapPin, 
-  Facebook, 
-  Twitter, 
-  Linkedin, 
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Facebook,
+  Twitter,
+  Linkedin,
   Instagram,
   ArrowRight,
   Send,
@@ -30,11 +30,11 @@ const Footer = () => {
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
-          animate={{ 
+          animate={{
             rotate: 360,
             scale: [1, 1.2, 1],
           }}
-          transition={{ 
+          transition={{
             duration: 20,
             repeat: Infinity,
             ease: "linear"
@@ -42,11 +42,11 @@ const Footer = () => {
           className="absolute -right-1/4 -top-1/4 w-1/2 h-1/2 bg-blue-500 rounded-full opacity-10 blur-3xl"
         />
         <motion.div
-          animate={{ 
+          animate={{
             rotate: -360,
             scale: [1, 1.3, 1],
           }}
-          transition={{ 
+          transition={{
             duration: 25,
             repeat: Infinity,
             ease: "linear"
@@ -153,17 +153,17 @@ const Footer = () => {
               <li className="flex items-start">
                 <MapPin className="w-5 h-5 mr-3 text-blue-400 mt-1" />
                 <span className="text-gray-300">
-                  123 Business Avenue, Suite 500<br />
-                  New York, NY 10001
+                  2C, 1, Indian Institute of Technology Delhi
+                  Hauz Khas, New Delhi 110016
                 </span>
               </li>
               <li className="flex items-center">
                 <Phone className="w-5 h-5 mr-3 text-blue-400" />
-                <span className="text-gray-300">+1 (555) 123-4567</span>
+                <span className="text-gray-300">+919193580737</span>
               </li>
               <li className="flex items-center">
                 <Mail className="w-5 h-5 mr-3 text-blue-400" />
-                <span className="text-gray-300">contact@7-labs.com</span>
+                <span className="text-gray-300">admin@brnco.in</span>
               </li>
               <li className="flex items-center">
                 <Clock className="w-5 h-5 mr-3 text-blue-400" />

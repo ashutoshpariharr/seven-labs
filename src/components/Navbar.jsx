@@ -64,10 +64,10 @@ const Navigation = () => {
         <div className="max-w-7xl mx-auto px-4 flex justify-between items-center text-sm">
           <div className="flex items-center space-x-4">
             <span className="flex items-center">
-              <Phone className="w-4 h-4 mr-2" /> +1 (555) 123-4567
+              <Phone className="w-4 h-4 mr-2" /> +919193580737
             </span>
             <span className="flex items-center">
-              <Mail className="w-4 h-4 mr-2" /> contact@7-labs.com
+              <Mail className="w-4 h-4 mr-2" /> admin@brnco.in
             </span>
           </div>
           <div className="flex space-x-4">

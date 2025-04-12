@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { 
-  Mail, 
-  Phone, 
-  MapPin, 
-  Clock, 
-  Send, 
-  MessageSquare, 
-  Users, 
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Clock,
+  Send,
+  MessageSquare,
+  Users,
   Building,
   ArrowRight,
   CheckCircle
@@ -34,11 +34,11 @@ const ContactPage = () => {
         {/* Animated Background Elements */}
         <div className="absolute inset-0">
           <motion.div
-            animate={{ 
+            animate={{
               rotate: 360,
               scale: [1, 1.2, 1],
             }}
-            transition={{ 
+            transition={{
               duration: 20,
               repeat: Infinity,
               ease: "linear"
@@ -46,11 +46,11 @@ const ContactPage = () => {
             className="absolute -right-1/4 -top-1/4 w-1/2 h-1/2 bg-blue-400 rounded-full opacity-20 blur-3xl"
           />
           <motion.div
-            animate={{ 
+            animate={{
               rotate: -360,
               scale: [1, 1.3, 1],
             }}
-            transition={{ 
+            transition={{
               duration: 25,
               repeat: Infinity,
               ease: "linear"
@@ -60,7 +60,7 @@ const ContactPage = () => {
         </div>
 
         <div className="relative max-w-7xl mx-auto px-4 text-center">
-          <motion.h1 
+          <motion.h1
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             className="text-4xl md:text-5xl font-bold mb-6"
@@ -91,22 +91,22 @@ const ContactPage = () => {
           >
             {/* Contact Cards */}
             {[
-              { 
-                icon: Phone, 
+              {
+                icon: Phone,
                 title: 'Call Us',
-                content: '+1 (555) 123-4567',
+                content: '+919193580737',
                 subContent: 'Mon-Fri from 9am to 6pm EST'
               },
               {
                 icon: Mail,
                 title: 'Email Us',
-                content: 'contact@7-labs.com',
+                content: 'admin@brnco.in',
                 subContent: "We'll respond within 24 hours"
               },
               {
                 icon: MapPin,
                 title: 'Visit Us',
-                content: '123 Business Avenue',
+                content: '2C, 1, Indian Institute of Technology Delhi',
                 subContent: 'New York, NY 10001'
               }
             ].map((item, index) => (
@@ -174,11 +174,10 @@ const ContactPage = () => {
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     onClick={() => setActiveTab(tab.id)}
-                    className={`flex items-center px-4 py-2 rounded-lg ${
-                      activeTab === tab.id
-                        ? 'bg-blue-50 text-blue-600'
-                        : 'text-gray-600 hover:bg-gray-50'
-                    }`}
+                    className={`flex items-center px-4 py-2 rounded-lg ${activeTab === tab.id
+                      ? 'bg-blue-50 text-blue-600'
+                      : 'text-gray-600 hover:bg-gray-50'
+                      }`}
                   >
                     <tab.icon className="w-4 h-4 mr-2" />
                     {tab.label}
@@ -276,12 +275,13 @@ const ContactPage = () => {
         >
           <div className="rounded-2xl overflow-hidden shadow-xl">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387193.30596073366!2d-74.25986682425766!3d40.69714941680757!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2s!4v1645564563586!5m2!1sen!2s"
-              width="100%"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3504.918290956924!2d77.19457887495336!3d28.54217558817911!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce36ee80b2aa1%3A0xf24233924110e6ec!2s2M%2C%20I%20St%2C%20IIT%20Campus%2C%20Indian%20Institute%20of%20Technology%20Delhi%2C%20Hauz%20Khas%2C%20New%20Delhi%2C%20Delhi%20110016!5e0!3m2!1sen!2sin!4v1744439280217!5m2!1sen!2sin"
+              width="600"
               height="450"
-              style={{ border: 0 }}
-              allowFullScreen=""
+              // style={{ border: 0 }}
+              allowFullScreen
               loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
             ></iframe>
           </div>
         </motion.div>

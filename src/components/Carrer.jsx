@@ -103,7 +103,7 @@ const CareerPage = () => {
           >
             <div className="flex items-center gap-2">
               <Users className="w-6 h-6" />
-              <span>200+ Employees</span>
+              <span>50+ Employees</span>
             </div>
             <div className="flex items-center gap-2">
               <TrendingUp className="w-6 h-6" />

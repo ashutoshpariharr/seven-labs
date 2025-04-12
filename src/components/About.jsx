@@ -9,9 +9,12 @@ import {
   Zap,
   Globe,
   Briefcase,
-  BarChart2,
-  Shield
+  Shield,
+  Search, 
+  Filter
 } from 'lucide-react';
+
+import { useState } from 'react';
 
 // Hero Section Component
 const HeroSection = () => {
@@ -141,7 +144,7 @@ const OurStorySection = () => {
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
                 <div className="p-8">
                   <div className="text-white text-xl font-medium">Where it all began</div>
-                  <div className="text-white/80 mt-2">Founded in 2008</div>
+                  <div className="text-white/80 mt-2">Founded in 2023</div>
                 </div>
               </div>
             </motion.div>
@@ -168,7 +171,7 @@ const OurStorySection = () => {
                 <div>
                   <h3 className="text-xl font-semibold text-gray-900 mb-2">Our Beginning</h3>
                   <p className="text-gray-600">
-                    Started by a team of three visionaries in 2008, we set out to reimagine how businesses approach financial planning and optimization.
+                    Started by a team of three visionaries in 2023, we set out to reimagine how businesses approach financial planning and optimization.
                   </p>
                 </div>
               </motion.div>
@@ -182,7 +185,7 @@ const OurStorySection = () => {
                 <div>
                   <h3 className="text-xl font-semibold text-gray-900 mb-2">Growth & Expansion</h3>
                   <p className="text-gray-600">
-                    By 2015, we had expanded to serve clients across 12 countries, with a team of over 100 dedicated professionals committed to excellence.
+                    By 2024, we had expanded to serve clients across many countries, with a team of over 100 dedicated professionals committed to excellence.
                   </p>
                 </div>
               </motion.div>
@@ -196,7 +199,7 @@ const OurStorySection = () => {
                 <div>
                   <h3 className="text-xl font-semibold text-gray-900 mb-2">Where We Are Today</h3>
                   <p className="text-gray-600">
-                    Today, we're proud to be the trusted partner of Fortune 500 companies and ambitious startups alike, delivering transformative results through innovative approaches.
+                    Today, we're proud to be the trusted partner of Fortune 50 companies and ambitious startups alike, delivering transformative results through innovative approaches.
                   </p>
                 </div>
               </motion.div>
@@ -293,167 +296,233 @@ const ValuesSection = () => {
 };
 
 // Team Section Component
-const TeamSection = () => {
-  const team = [
+function IndustriesSection() {
+  const [filter, setFilter] = useState('');
+  const [showAll, setShowAll] = useState(false);
+  
+  const industries = [
     {
-      name: "Sarah Johnson",
-      role: "Founder & CEO",
-      photo: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=988&auto=format&fit=crop",
-      bio: "With over 20 years in business consulting, Sarah founded the company with a vision to redefine business transformation."
+      name: "Infrastructure & Civil Engineering",
+      icon: "🏗️",
+      description: "Building the foundations of modern society through innovative construction solutions and infrastructure development.",
+      featured: true
     },
     {
-      name: "Michael Chen",
-      role: "Chief Strategy Officer",
-      photo: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=1170&auto=format&fit=crop",
-      bio: "Michael brings his expertise from Silicon Valley to help businesses navigate digital transformation and market disruption."
+      name: "Food Service",
+      icon: "🍽️",
+      description: "Delivering exceptional culinary experiences through streamlined operations and quality service management.",
+      featured: true
     },
     {
-      name: "Priya Sharma",
-      role: "Head of Client Success",
-      photo: "https://images.unsplash.com/photo-1564564321837-a57b7070ac4f?q=80&w=1176&auto=format&fit=crop",
-      bio: "Priya ensures every client experiences exceptional service and achieves meaningful results through our partnership."
+      name: "Publishing",
+      icon: "📚",
+      description: "Transforming content creation, distribution, and monetization in the digital age of media.",
+      featured: true
     },
     {
-      name: "David Williams",
-      role: "Finance Director",
-      photo: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=987&auto=format&fit=crop",
-      bio: "David's financial acumen helps our clients optimize their financial strategies for sustainable long-term growth."
+      name: "Apparel",
+      icon: "👕",
+      description: "Revolutionizing fashion through sustainable practices and technology-driven supply chain solutions.",
+      featured: true
+    },
+    {
+      name: "Information Technology",
+      icon: "💻",
+      description: "Empowering businesses with cutting-edge technology solutions and digital transformation strategies.",
+      featured: true
+    },
+    {
+      name: "Digital & Creative Design",
+      icon: "🎨",
+      description: "Creating memorable brand experiences through innovative design thinking and visual storytelling.",
+      featured: true
+    },
+    {
+      name: "Crafts",
+      icon: "🧶",
+      description: "Supporting artisans and small-scale producers with business strategy and market expansion.",
+      featured: false
+    },
+    {
+      name: "Pharmaceuticals",
+      icon: "💊",
+      description: "Advancing healthcare through operational excellence and regulatory compliance expertise.",
+      featured: false
+    },
+    {
+      name: "Architecture & Construction",
+      icon: "🏛️",
+      description: "Building sustainable futures through innovative design and construction management.",
+      featured: false
+    },
+    {
+      name: "Footwear",
+      icon: "👟",
+      description: "Stepping into the future with advanced manufacturing and sustainable materials innovation.",
+      featured: false
+    },
+    {
+      name: "Tourism & Travel",
+      icon: "✈️",
+      description: "Creating unforgettable experiences through customer-centric hospitality and destination management.",
+      featured: false
+    },
+    {
+      name: "Corrugated Packaging",
+      icon: "📦",
+      description: "Revolutionizing sustainable packaging solutions for the modern supply chain.",
+      featured: false
+    },
+    {
+      name: "Glass Manufacturing",
+      icon: "🏺",
+      description: "Crafting transparency through innovative processes and sustainable materials science.",
+      featured: false
+    },
+    {
+      name: "Carpet & Rug Manufacturing",
+      icon: "🧶",
+      description: "Weaving comfort and sustainability into interior design solutions and floor coverings.",
+      featured: false
     }
   ];
-
+  
+  const filteredIndustries = filter 
+    ? industries.filter(industry => industry.name.toLowerCase().includes(filter.toLowerCase()))
+    : showAll 
+      ? industries 
+      : industries.filter(industry => industry.featured);
+      
   return (
-    <div className="py-24 bg-white">
+    <div className="py-24 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ y: -20, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto mb-16"
-        >
+        <div className="text-center max-w-3xl mx-auto mb-12">
           <div className="inline-block bg-blue-100 rounded-full px-4 py-1.5 text-blue-600 text-sm font-medium mb-6">
-            Meet Our Team
+            Industries We Serve
           </div>
           <h2 className="text-4xl font-bold text-gray-900 mb-6">
-            The Experts Behind Our Success
+            Expertise Across Multiple Sectors
           </h2>
           <p className="text-xl text-gray-600">
-            Our team brings decades of combined experience across industries to deliver exceptional results for our clients.
+            Our specialized knowledge and tailored solutions help businesses thrive in these diverse industries.
           </p>
-        </motion.div>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {team.map((member, index) => (
-            <motion.div
-              key={index}
-              initial={{ y: 50, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group"
+        </div>
+        
+        <div className="mb-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+          <div className="relative w-full sm:w-auto">
+            <input
+              type="text"
+              placeholder="Search industries..."
+              value={filter}
+              onChange={(e) => setFilter(e.target.value)}
+              className="pl-10 pr-4 py-2 border border-gray-300 rounded-lg w-full sm:w-64 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+            />
+            <Search className="absolute left-3 top-2.5 text-gray-400 w-5 h-5" />
+          </div>
+          
+          <div className="flex items-center gap-2">
+            <Filter className="text-gray-500 w-5 h-5" />
+            <button 
+              onClick={() => setShowAll(!showAll)}
+              className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                showAll 
+                  ? 'bg-blue-600 text-white' 
+                  : 'bg-white border border-gray-300 text-gray-700 hover:bg-gray-100'
+              }`}
             >
-              <motion.div
-                whileHover={{ y: -10 }}
-                transition={{ type: 'spring', stiffness: 300 }}
-                className="bg-white rounded-xl overflow-hidden shadow-lg"
-              >
-                <div className="relative overflow-hidden">
-                  <img
-                    src={member.photo}
-                    alt={member.name}
-                    className="w-full h-80 object-cover object-center group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.3 + index * 0.1 }}
-                    className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end"
-                  >
-                    <div className="p-6">
-                      <div className="flex space-x-3 mb-4">
-                        {['LinkedIn', 'Twitter', 'Email'].map((social, i) => (
-                          <motion.div
-                            key={i}
-                            whileHover={{ y: -3 }}
-                            className="w-8 h-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center cursor-pointer"
-                          >
-                            <span className="text-white text-xs">{social[0]}</span>
-                          </motion.div>
-                        ))}
-                      </div>
-                    </div>
-                  </motion.div>
+              {showAll ? 'Showing All' : 'Featured Only'}
+            </button>
+          </div>
+        </div>
+        
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {filteredIndustries.map((industry, index) => (
+            <div
+              key={index}
+              className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 border border-gray-100"
+            >
+              <div className="p-6">
+                <div className="flex justify-between items-start mb-4">
+                  <span className="text-4xl">{industry.icon}</span>
+                  {industry.featured && (
+                    <span className="bg-blue-50 text-blue-600 text-xs py-1 px-2 rounded-full">
+                      Featured
+                    </span>
+                  )}
                 </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-gray-900">{member.name}</h3>
-                  <p className="text-blue-600 mb-4">{member.role}</p>
-                  <p className="text-gray-600 text-sm">{member.bio}</p>
-                </div>
-              </motion.div>
-            </motion.div>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">{industry.name}</h3>
+                <p className="text-gray-600 mb-4">{industry.description}</p>
+                <button className="text-blue-600 font-medium inline-flex items-center hover:underline">
+                  Learn more <ArrowRight className="ml-1 w-4 h-4" />
+                </button>
+              </div>
+            </div>
           ))}
         </div>
         
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className="mt-16 text-center"
-        >
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="px-8 py-3 bg-blue-50 text-blue-600 rounded-lg inline-flex items-center border border-blue-200 hover:bg-blue-100 transition-colors"
+        {filteredIndustries.length === 0 && (
+          <div className="text-center py-12">
+            <p className="text-gray-500 text-lg">No industries found matching your search.</p>
+            <button 
+              onClick={() => setFilter('')}
+              className="mt-4 text-blue-600 font-medium"
+            >
+              Clear search
+            </button>
+          </div>
+        )}
+        
+        <div className="mt-16 text-center">
+          <button
+            className="px-8 py-3 bg-blue-600 text-white rounded-lg inline-flex items-center hover:bg-blue-700 transition-colors"
           >
-            Meet the entire team <ArrowRight className="ml-2 w-4 h-4" />
-          </motion.button>
-        </motion.div>
+            Request a consultation <ArrowRight className="ml-2 w-4 h-4" />
+          </button>
+        </div>
       </div>
     </div>
   );
-};
+}
 
 // Milestones Section Component
 const MilestonesSection = () => {
   const milestones = [
     {
-      year: "2008",
+      year: "2023",
       title: "Company Founded",
-      description: "Started with a team of 3 consultants in a small office in Chicago.",
+      description: "Started with a team of 2 consultants in a small office in Delhi and Agra.",
       icon: <Briefcase className="w-6 h-6 text-white" />
     },
     {
-      year: "2012",
+      year: "2024",
       title: "First International Client",
       description: "Expanded services to Europe with our first multinational client.",
       icon: <Globe className="w-6 h-6 text-white" />
     },
     {
-      year: "2015",
+      year: "2025",
       title: "100th Client Milestone",
       description: "Celebrated our 100th successful client partnership.",
       icon: <Users className="w-6 h-6 text-white" />
     },
     {
-      year: "2018",
+      year: "2025",
       title: "Digital Transformation Practice",
       description: "Launched specialized digital transformation consulting services.",
       icon: <Zap className="w-6 h-6 text-white" />
     },
-    {
-      year: "2021",
-      title: "500+ Projects Completed",
-      description: "Reached the milestone of 500 successful client projects.",
-      icon: <BarChart2 className="w-6 h-6 text-white" />
-    },
-    {
-      year: "Today",
-      title: "Global Impact",
-      description: "Now serving clients across 28 countries with a team of 150+ experts.",
-      icon: <Target className="w-6 h-6 text-white" />
-    }
+    // {
+    //   year: "2021",
+    //   title: "500+ Projects Completed",
+    //   description: "Reached the milestone of 500 successful client projects.",
+    //   icon: <BarChart2 className="w-6 h-6 text-white" />
+    // },
+    // {
+    //   year: "Today",
+    //   title: "Global Impact",
+    //   description: "Now serving clients across 28 countries with a team of 150+ experts.",
+    //   icon: <Target className="w-6 h-6 text-white" />
+    // }
   ];
 
   return (
@@ -537,19 +606,19 @@ const AwardsSection = () => {
     {
       title: "Best Consulting Firm",
       organization: "Finance Excellence Awards",
-      year: "2021",
+      year: "2023",
       icon: <Award className="w-10 h-10 text-yellow-500" />
     },
     {
       title: "Client Satisfaction Excellence",
       organization: "International Service Standards",
-      year: "2020",
+      year: "2024",
       icon: <Users className="w-10 h-10 text-yellow-500" />
     },
     {
       title: "Top Growth Consultancy",
       organization: "Business Growth Alliance",
-      year: "2019",
+      year: "2025",
       icon: <TrendingUp className="w-10 h-10 text-yellow-500" />
     }
   ];
@@ -630,7 +699,8 @@ const AboutPage = () => {
         <ValuesSection />
         
         {/* Team Section */}
-        <TeamSection />
+        {/* <TeamSection /> */}
+        <IndustriesSection />
         
         {/* Milestones Section */}
         <MilestonesSection />
