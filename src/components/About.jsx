@@ -1,20 +1,21 @@
 import { motion } from 'framer-motion';
-import { 
-  ArrowRight, 
-  Users, 
-  Target, 
-  Clock, 
-  TrendingUp, 
-  Award, 
+import {
+  ArrowRight,
+  Users,
+  Target,
+  Clock,
+  TrendingUp,
+  Award,
   Zap,
   Globe,
   Briefcase,
   Shield,
-  Search, 
+  Search,
   Filter
 } from 'lucide-react';
 
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 // Hero Section Component
 const HeroSection = () => {
@@ -81,7 +82,7 @@ const HeroSection = () => {
             </span>
             to Excellence
           </h1>
-          <motion.p 
+          <motion.p
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.7 }}
@@ -119,7 +120,7 @@ const OurStorySection = () => {
   return (
     <div className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div 
+        <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -130,7 +131,7 @@ const OurStorySection = () => {
             {/* Decorative elements */}
             <div className="absolute -left-8 -top-8 w-32 h-32 bg-blue-100 rounded-full opacity-50 blur-xl"></div>
             <div className="absolute -right-4 -bottom-4 w-24 h-24 bg-indigo-100 rounded-full opacity-60 blur-xl"></div>
-            
+
             <motion.div
               whileHover={{ scale: 1.03 }}
               transition={{ type: 'spring', stiffness: 300 }}
@@ -157,8 +158,8 @@ const OurStorySection = () => {
             <h2 className="text-4xl font-bold text-gray-900 leading-tight mb-8">
               From Humble Beginnings to Industry Leaders
             </h2>
-            
-            <motion.div 
+
+            <motion.div
               variants={containerVariants}
               className="space-y-8"
             >
@@ -175,7 +176,7 @@ const OurStorySection = () => {
                   </p>
                 </div>
               </motion.div>
-              
+
               <motion.div variants={itemVariants} className="flex gap-4">
                 <div className="flex-none">
                   <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
@@ -189,7 +190,7 @@ const OurStorySection = () => {
                   </p>
                 </div>
               </motion.div>
-              
+
               <motion.div variants={itemVariants} className="flex gap-4">
                 <div className="flex-none">
                   <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
@@ -204,14 +205,14 @@ const OurStorySection = () => {
                 </div>
               </motion.div>
             </motion.div>
-            
-            <motion.button
+
+            {/* <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="mt-10 px-6 py-3 bg-blue-50 text-blue-600 rounded-lg flex items-center border border-blue-200 hover:bg-blue-100 transition-colors"
             >
               Read our full story <ArrowRight className="ml-2 w-4 h-4" />
-            </motion.button>
+            </motion.button> */}
           </motion.div>
         </motion.div>
       </div>
@@ -299,7 +300,7 @@ const ValuesSection = () => {
 function IndustriesSection() {
   const [filter, setFilter] = useState('');
   const [showAll, setShowAll] = useState(false);
-  
+
   const industries = [
     {
       name: "Infrastructure & Civil Engineering",
@@ -386,13 +387,13 @@ function IndustriesSection() {
       featured: false
     }
   ];
-  
-  const filteredIndustries = filter 
+
+  const filteredIndustries = filter
     ? industries.filter(industry => industry.name.toLowerCase().includes(filter.toLowerCase()))
-    : showAll 
-      ? industries 
+    : showAll
+      ? industries
       : industries.filter(industry => industry.featured);
-      
+
   return (
     <div className="py-24 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -407,7 +408,7 @@ function IndustriesSection() {
             Our specialized knowledge and tailored solutions help businesses thrive in these diverse industries.
           </p>
         </div>
-        
+
         <div className="mb-8 flex flex-col sm:flex-row justify-between items-center gap-4">
           <div className="relative w-full sm:w-auto">
             <input
@@ -419,22 +420,21 @@ function IndustriesSection() {
             />
             <Search className="absolute left-3 top-2.5 text-gray-400 w-5 h-5" />
           </div>
-          
+
           <div className="flex items-center gap-2">
             <Filter className="text-gray-500 w-5 h-5" />
-            <button 
+            <button
               onClick={() => setShowAll(!showAll)}
-              className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                showAll 
-                  ? 'bg-blue-600 text-white' 
+              className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${showAll
+                  ? 'bg-blue-600 text-white'
                   : 'bg-white border border-gray-300 text-gray-700 hover:bg-gray-100'
-              }`}
+                }`}
             >
               {showAll ? 'Showing All' : 'Featured Only'}
             </button>
           </div>
         </div>
-        
+
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredIndustries.map((industry, index) => (
             <div
@@ -459,11 +459,11 @@ function IndustriesSection() {
             </div>
           ))}
         </div>
-        
+
         {filteredIndustries.length === 0 && (
           <div className="text-center py-12">
             <p className="text-gray-500 text-lg">No industries found matching your search.</p>
-            <button 
+            <button
               onClick={() => setFilter('')}
               className="mt-4 text-blue-600 font-medium"
             >
@@ -471,13 +471,15 @@ function IndustriesSection() {
             </button>
           </div>
         )}
-        
+
         <div className="mt-16 text-center">
-          <button
-            className="px-8 py-3 bg-blue-600 text-white rounded-lg inline-flex items-center hover:bg-blue-700 transition-colors"
-          >
-            Request a consultation <ArrowRight className="ml-2 w-4 h-4" />
-          </button>
+          <Link to="/contact">
+            <button
+              className="px-8 py-3 bg-blue-600 text-white rounded-lg inline-flex items-center hover:bg-blue-700 transition-colors"
+            >
+              Request a consultation <ArrowRight className="ml-2 w-4 h-4" />
+            </button>
+          </Link>
         </div>
       </div>
     </div>
@@ -573,7 +575,7 @@ const MilestonesSection = () => {
                     <p className="text-gray-600">{milestone.description}</p>
                   </div>
                 </div>
-                
+
                 <div className="mx-auto md:mx-0 relative">
                   <motion.div
                     whileHover={{ scale: 1.2, rotate: 360 }}
@@ -583,7 +585,7 @@ const MilestonesSection = () => {
                     {milestone.icon}
                   </motion.div>
                 </div>
-                
+
                 <div className="hidden md:block md:w-1/2"></div>
               </motion.div>
             ))}
@@ -652,7 +654,7 @@ const AwardsSection = () => {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: index * 0.1 }}
-              whileHover={{ 
+              whileHover={{
                 y: -10,
                 boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
               }}
@@ -687,28 +689,28 @@ const AwardsSection = () => {
 };
 
 const AboutPage = () => {
-    return (
-      <>
-        {/* Hero Section */}
-        <HeroSection />
-        
-        {/* Our Story Section */}
-        <OurStorySection />
-        
-        {/* Values Section */}
-        <ValuesSection />
-        
-        {/* Team Section */}
-        {/* <TeamSection /> */}
-        <IndustriesSection />
-        
-        {/* Milestones Section */}
-        <MilestonesSection />
-        
-        {/* Awards Section */}
-        <AwardsSection />
-      </>
-    );
-  };
+  return (
+    <>
+      {/* Hero Section */}
+      <HeroSection />
 
-  export default AboutPage;
+      {/* Our Story Section */}
+      <OurStorySection />
+
+      {/* Values Section */}
+      <ValuesSection />
+
+      {/* Team Section */}
+      {/* <TeamSection /> */}
+      <IndustriesSection />
+
+      {/* Milestones Section */}
+      <MilestonesSection />
+
+      {/* Awards Section */}
+      <AwardsSection />
+    </>
+  );
+};
+
+export default AboutPage;

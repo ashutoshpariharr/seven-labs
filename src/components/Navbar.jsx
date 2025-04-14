@@ -50,12 +50,12 @@ const Navigation = () => {
   const handleNavigation = (itemName, path) => {
     setActiveItem(itemName);
     setIsOpen(false);
-    navigate(path); // Use navigate instead of window.location.href
+    navigate(path);
   };
 
   return (
     <>
-      {/* Top Info Bar */}
+      {/* Top Info Bar
       <motion.div
         initial={{ y: -50 }}
         animate={{ y: 0 }}
@@ -79,7 +79,7 @@ const Navigation = () => {
             </motion.button>
           </div>
         </div>
-      </motion.div>
+      </motion.div> */}
 
       {/* Main Navigation */}
       <motion.nav
