@@ -74,10 +74,11 @@ const Footer = () => {
               Empowering businesses through innovative financial solutions and strategic optimization.
             </p>
             <div className="flex space-x-4">
-              {[Facebook, Twitter, Linkedin, Instagram].map((Icon, index) => (
+              {[ Linkedin].map((Icon, index) => (
                 <motion.a
                   key={index}
-                  href="#"
+                  href="https://www.linkedin.com/company/7-labs-vision/posts/?feedView=all"
+                  target='_black'
                   whileHover={{ scale: 1.1, y: -3 }}
                   className="bg-white/10 p-2 rounded-full hover:bg-white/20 transition-colors"
                 >
@@ -167,7 +168,7 @@ const Footer = () => {
               </li>
               <li className="flex items-center">
                 <Clock className="w-5 h-5 mr-3 text-blue-400" />
-                <span className="text-gray-300">Mon - Fri: 9:00 AM - 6:00 PM</span>
+                <span className="text-gray-300">Mon - Sat: 11:00 AM - 6:00 PM</span>
               </li>
             </ul>
           </motion.div>

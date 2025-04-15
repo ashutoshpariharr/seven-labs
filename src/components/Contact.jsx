@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
+import emailjs from '@emailjs/browser';
 import {
   Mail,
   Phone,
@@ -10,12 +11,69 @@ import {
   Users,
   Building,
   ArrowRight,
-  CheckCircle
+  CheckCircle,
+  Loader
 } from 'lucide-react';
 
 const ContactPage = () => {
+  const form = useRef();
   const [formStatus, setFormStatus] = useState('idle');
   const [activeTab, setActiveTab] = useState('message');
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    subject: 'General Inquiry',
+    message: ''
+  });
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value
+    });
+  };
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+    
+    // Set loading state
+    setFormStatus('loading');
+
+    const serviceId = 'service_2jr7ug1';
+    const templateId = 'template_vsh4hvy';
+    const publicKey = '5hSxfLKpLiJGXLmqI';
+    
+    emailjs.sendForm(serviceId, templateId, form.current, publicKey)
+      .then((result) => {
+        console.log('Email sent successfully:', result.text);
+        setFormStatus('success');
+        
+        // Reset form
+        setFormData({
+          firstName: '',
+          lastName: '',
+          email: '',
+          subject: 'General Inquiry',
+          message: ''
+        });
+        
+        // Reset status after 5 seconds
+        setTimeout(() => {
+          setFormStatus('idle');
+        }, 5000);
+      })
+      .catch((error) => {
+        console.error('Failed to send email:', error.text);
+        setFormStatus('error');
+        
+        // Reset status after 5 seconds
+        setTimeout(() => {
+          setFormStatus('idle');
+        }, 5000);
+      });
+  };
 
   const fadeInUpVariants = {
     initial: { y: 30, opacity: 0 },
@@ -25,13 +83,11 @@ const ContactPage = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
-      {/* Hero Section */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         className="relative bg-blue-600 text-white py-24 overflow-hidden"
       >
-        {/* Animated Background Elements */}
         <div className="absolute inset-0">
           <motion.div
             animate={{
@@ -95,7 +151,7 @@ const ContactPage = () => {
                 icon: Phone,
                 title: 'Call Us',
                 content: '+919193580737',
-                subContent: 'Mon-Fri from 9am to 6pm EST'
+                subContent: 'Mon-Sat from 11 am to 6 pm EST'
               },
               {
                 icon: Mail,
@@ -186,7 +242,7 @@ const ContactPage = () => {
               </div>
 
               {/* Contact Form */}
-              <form className="space-y-6">
+              <form ref={form} onSubmit={sendEmail} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -194,7 +250,11 @@ const ContactPage = () => {
                     </label>
                     <input
                       type="text"
+                      name="firstName"
+                      value={formData.firstName}
+                      onChange={handleInputChange}
                       className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                      required
                     />
                   </div>
                   <div>
@@ -203,7 +263,11 @@ const ContactPage = () => {
                     </label>
                     <input
                       type="text"
+                      name="lastName"
+                      value={formData.lastName}
+                      onChange={handleInputChange}
                       className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                      required
                     />
                   </div>
                 </div>
@@ -214,7 +278,11 @@ const ContactPage = () => {
                   </label>
                   <input
                     type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
                     className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                    required
                   />
                 </div>
 
@@ -222,7 +290,12 @@ const ContactPage = () => {
                   <label className="block text-sm font-medium text-gray-700 mb-2">
                     Subject
                   </label>
-                  <select className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all">
+                  <select 
+                    name="subject"
+                    value={formData.subject}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                  >
                     <option>General Inquiry</option>
                     <option>Business Consultation</option>
                     <option>Service Quote</option>
@@ -236,7 +309,11 @@ const ContactPage = () => {
                   </label>
                   <textarea
                     rows={6}
+                    name="message"
+                    value={formData.message}
+                    onChange={handleInputChange}
                     className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                    required
                   />
                 </div>
 
@@ -244,10 +321,20 @@ const ContactPage = () => {
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   type="submit"
-                  className="w-full bg-blue-600 text-white py-4 px-6 rounded-lg font-medium flex items-center justify-center space-x-2 hover:bg-blue-700 transition-colors"
+                  disabled={formStatus === 'loading'}
+                  className="w-full bg-blue-600 text-white py-4 px-6 rounded-lg font-medium flex items-center justify-center space-x-2 hover:bg-blue-700 transition-colors disabled:bg-blue-400"
                 >
-                  <Send className="w-5 h-5" />
-                  <span>Send Message</span>
+                  {formStatus === 'loading' ? (
+                    <>
+                      <Loader className="w-5 h-5 animate-spin" />
+                      <span>Sending...</span>
+                    </>
+                  ) : (
+                    <>
+                      <Send className="w-5 h-5" />
+                      <span>Send Message</span>
+                    </>
+                  )}
                 </motion.button>
 
                 {formStatus === 'success' && (
@@ -258,6 +345,17 @@ const ContactPage = () => {
                   >
                     <CheckCircle className="w-5 h-5 mr-2" />
                     Message sent successfully!
+                  </motion.div>
+                )}
+
+                {formStatus === 'error' && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="p-4 bg-red-50 text-red-600 rounded-lg flex items-center"
+                  >
+                    <CheckCircle className="w-5 h-5 mr-2" />
+                    Failed to send message. Please try again.
                   </motion.div>
                 )}
               </form>
@@ -273,12 +371,12 @@ const ContactPage = () => {
           variants={fadeInUpVariants}
           className="mt-16"
         >
-          <div className="rounded-2xl overflow-hidden shadow-xl">
+          <div className="rounded-2xl overflow-hidden shadow-xl h-96">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3504.918290956924!2d77.19457887495336!3d28.54217558817911!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce36ee80b2aa1%3A0xf24233924110e6ec!2s2M%2C%20I%20St%2C%20IIT%20Campus%2C%20Indian%20Institute%20of%20Technology%20Delhi%2C%20Hauz%20Khas%2C%20New%20Delhi%2C%20Delhi%20110016!5e0!3m2!1sen!2sin!4v1744439280217!5m2!1sen!2sin"
-              width="600"
-              height="450"
-              // style={{ border: 0 }}
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"

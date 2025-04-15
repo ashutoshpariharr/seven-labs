@@ -6,7 +6,6 @@ import {
   ClipboardDocumentCheckIcon,
   ShieldCheckIcon
 } from '@heroicons/react/24/outline';
-// import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "./UI/UI";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../UI/UI';
 
 // Shared animation variants
@@ -33,13 +32,13 @@ const staggerChildren = {
 const VirtualCFO = () => {
   return (
     <motion.div
-      className="min-h-screen p-6 bg-gradient-to-br from-blue-50 to-indigo-50 mt-30 mt-[6rem]"
+      className="min-h-screen p-6 bg-gradient-to-br from-blue-50 to-indigo-50"
       initial="initial"
       animate="animate"
       exit="exit"
       variants={staggerChildren}
     >
-      <motion.div variants={pageVariants} className="max-w-4xl mx-auto">
+      <motion.div variants={pageVariants} className="max-w-4xl mx-auto mt-20">
         <motion.div
           className="flex items-center space-x-4 mb-8"
           whileHover={{ scale: 1.02 }}
@@ -119,13 +118,13 @@ const VirtualCFO = () => {
 const BusinessOptimization = () => {
   return (
     <motion.div
-      className="min-h-screen p-6 bg-gradient-to-br from-green-50 to-emerald-50 mt-[6rem]"
+      className="min-h-screen p-6 bg-gradient-to-br from-green-50 to-emerald-50"
       initial="initial"
       animate="animate"
       exit="exit"
       variants={staggerChildren}
     >
-      <motion.div variants={pageVariants} className="max-w-4xl mx-auto">
+      <motion.div variants={pageVariants} className="max-w-4xl mx-auto mt-20">
         <motion.div
           className="flex items-center space-x-4 mb-8"
           whileHover={{ scale: 1.02 }}
@@ -183,13 +182,13 @@ const BusinessOptimization = () => {
 const InternalAudits = () => {
   return (
     <motion.div
-      className="min-h-screen p-6 bg-gradient-to-br from-purple-50 to-pink-50 mt-[6rem]"
+      className="min-h-screen p-6 bg-gradient-to-br from-purple-50 to-pink-50"
       initial="initial"
       animate="animate"
       exit="exit"
       variants={staggerChildren}
     >
-      <motion.div variants={pageVariants} className="max-w-4xl mx-auto">
+      <motion.div variants={pageVariants} className="max-w-4xl mx-auto mt-20">
         <motion.div
           className="flex items-center space-x-4 mb-8"
           whileHover={{ scale: 1.02 }}
@@ -245,13 +244,13 @@ const InternalAudits = () => {
 const FinancialControls = () => {
   return (
     <motion.div
-      className="min-h-screen p-6 bg-gradient-to-br from-red-50 to-orange-50 mt-[6rem]"
+      className="min-h-screen p-6 bg-gradient-to-br from-red-50 to-orange-50"
       initial="initial"
       animate="animate"
       exit="exit"
       variants={staggerChildren}
     >
-      <motion.div variants={pageVariants} className="max-w-4xl mx-auto">
+      <motion.div variants={pageVariants} className="max-w-4xl mx-auto mt-20">
         <motion.div
           className="flex items-center space-x-4 mb-8"
           whileHover={{ scale: 1.02 }}

@@ -23,13 +23,11 @@ const App = () => {
             <Route path="/contact" element={<ContactPage />} />
 
             {/* Services Routes */}
-            {/* <div className="mt-20"> */}
               <Route path="/services" element={<ServicesSection />} />
               <Route path="/services/virtual-cfo" element={<VirtualCFO />} />
               <Route path="/services/business-optimization" element={<BusinessOptimization />} />
               <Route path="/services/internal-audits" element={<InternalAudits />} />
               <Route path="/services/financial-controls" element={<FinancialControls />} />
-            {/* </div> */}
 
             {/* 404 Route */}
             <Route path="*" element={
