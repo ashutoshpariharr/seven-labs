@@ -74,7 +74,7 @@ const Footer = () => {
               Empowering businesses through innovative financial solutions and strategic optimization.
             </p>
             <div className="flex space-x-4">
-              {[ Linkedin].map((Icon, index) => (
+              {[Linkedin].map((Icon, index) => (
                 <motion.a
                   key={index}
                   href="https://www.linkedin.com/company/7-labs-vision/posts/?feedView=all"
@@ -104,7 +104,12 @@ const Footer = () => {
                   className="flex items-center"
                 >
                   <ArrowRight className="w-4 h-4 mr-2 text-blue-400" />
-                  <a href="/" className="text-gray-300 hover:text-white transition-colors">
+                  <a href={
+                    item === "About Us" ? "/about" :
+                      item === "Services" ? "/services" :
+                        item === "Career" ? "/career" :
+                          item === "Contact" ? "/contact" :
+                            "/"} className="text-gray-300 hover:text-white transition-colors">
                     {item}
                   </a>
                 </motion.li>

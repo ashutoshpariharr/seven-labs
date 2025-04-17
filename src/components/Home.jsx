@@ -5,6 +5,7 @@ import TestimonialsSection from './TestimonialsSection';
 import { CTASection } from './AwardsSection';
 import { Link } from 'react-router-dom';
 import LogoMarquee from './LogoMarquee';
+import TestimonialSlider from './HomeSlider';
 
 const HeroSection = () => {
   return (
@@ -94,7 +95,7 @@ const HeroSection = () => {
                     Get Started <ArrowRight className="ml-2" />
                   </motion.button>
                 </Link>
-                <Link to="/services">
+                <Link to="/demo">
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
@@ -107,8 +108,8 @@ const HeroSection = () => {
               <div className="mt-12 grid grid-cols-3 gap-4">
                 {[
                   { number: "95%", text: "Client Satisfaction" },
-                  { number: "500+", text: "Projects Completed" },
-                  { number: "15+", text: "Years Experience" }
+                  { number: "70+", text: "Projects Completed" },
+                  { number: "3+", text: "Years Experience" }
                 ].map((stat, index) => (
                   <motion.div
                     key={index}
@@ -169,6 +170,7 @@ const HeroSection = () => {
         </div>
       </motion.div>
       <FeaturesSection />
+      <TestimonialSlider />
       <CTASection />
       {/* <TestimonialsSection /> */}
       {/* <LogoMarquee /> */}

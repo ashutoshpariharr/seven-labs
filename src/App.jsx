@@ -7,6 +7,9 @@ import ContactPage from "./components/Contact";
 import Footer from "./components/Footer";
 import CareerPage from "./components/Carrer";
 import { BusinessOptimization, FinancialControls, InternalAudits, VirtualCFO } from "./components/services/VirtualCFO";
+import GAcconUI from "./components/ShowDemo";
+import IndustryDetailPage from "./components/experties/IndustryDetailPage";
+import IndustriesSection from "./components/experties/Industries";
 
 // Main App Component
 const App = () => {
@@ -21,6 +24,13 @@ const App = () => {
             <Route path="/about" element={<AboutPage />} />
             <Route path="/career" element={<CareerPage />} />
             <Route path="/contact" element={<ContactPage />} />
+
+            {/* Demo components   */}
+            <Route path="/demo" element={<GAcconUI />} />
+
+            <Route path="/industry" element={<IndustriesSection />} />
+            <Route path="/industry/:industryId" element={<IndustryDetailPage />} />
+
 
             {/* Services Routes */}
               <Route path="/services" element={<ServicesSection />} />

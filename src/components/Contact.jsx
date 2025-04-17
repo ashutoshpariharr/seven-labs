@@ -151,7 +151,7 @@ const ContactPage = () => {
                 icon: Phone,
                 title: 'Call Us',
                 content: '+919193580737',
-                subContent: 'Mon-Sat from 11 am to 6 pm EST'
+                subContent: 'Mon-Sat from 11 am to 6 pm'
               },
               {
                 icon: Mail,
@@ -163,7 +163,7 @@ const ContactPage = () => {
                 icon: MapPin,
                 title: 'Visit Us',
                 content: '2C, 1, Indian Institute of Technology Delhi',
-                subContent: 'New York, NY 10001'
+                subContent: 'Delhi'
               }
             ].map((item, index) => (
               <motion.div
