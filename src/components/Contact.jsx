@@ -156,7 +156,7 @@ const ContactPage = () => {
               {
                 icon: Mail,
                 title: 'Email Us',
-                content: 'admin@brnco.in',
+                content: 'admin@sevenlabs.in',
                 subContent: "We'll respond within 24 hours"
               },
               {

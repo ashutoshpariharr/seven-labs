@@ -11,63 +11,63 @@ function IndustriesSection() {
             id: "infrastructure-civil-engineering",
             name: "Infrastructure & Civil Engineering",
             icon: "🏗️",
-            description: "Building the foundations of modern society through innovative construction solutions and infrastructure development.",
+            description: "At 7 Labs Vision, we partner with contractors, construction companies, and interior design firms to bring structure, clarity, and control to their complex project operations.",
             featured: true
         },
         {
             id: "food-service",
             name: "Food Service",
             icon: "🍽️",
-            description: "Delivering exceptional culinary experiences through streamlined operations and quality service management.",
+            description: "In the fast-paced world of food service, operational efficiency is everything. At 7 Labs Vision, we support industrial catering companies and QSR chains that operate across multiple locations and serve diverse industries, helping them scale without losing control of operations",
             featured: true
         },
         {
             id: "publishing",
             name: "Publishing",
             icon: "📚",
-            description: "Transforming content creation, distribution, and monetization in the digital age of media.",
+            description: "The publishing industry demands precision, creativity, and consistency—qualities that are hard to maintain without the right systems in place. At 7 Labs Vision, we assist publishing houses and media firms in structuring their operations, improving team productivity, and ensuring clear performance metrics across their workforce.",
             featured: true
         },
         {
             id: "apparel",
             name: "Apparel",
             icon: "👕",
-            description: "Revolutionizing fashion through sustainable practices and technology-driven supply chain solutions.",
+            description: "In the fast-moving world of apparel, managing production schedules, inventory, and workforce efficiency are key to staying competitive. At 7 Labs Vision, we help apparel brands streamline operations by creating simple yet effective systems for tracking employee tasks, attendance, and project timelines.",
             featured: true
         },
         {
             id: "information-technology",
             name: "Information Technology",
             icon: "💻",
-            description: "Empowering businesses with cutting-edge technology solutions and digital transformation strategies.",
+            description: "Startups and tech companies grow fast—and often outpace their internal systems. At 7 Labs Vision, we support IT firms and SaaS startups by acting as their virtual CFO, guiding them through financial planning, compliance, and fundraising, while helping them stay investor-ready at every stage.",
             featured: true
         },
         {
             id: "digital-creative-design",
             name: "Digital & Creative Design",
             icon: "🎨",
-            description: "Creating memorable brand experiences through innovative design thinking and visual storytelling.",
+            description: "n the competitive world of digital and creative design, delivering innovative solutions while maintaining operational efficiency is key to success.",
             featured: true
         },
         {
             id: "crafts",
             name: "Crafts",
             icon: "🧶",
-            description: "Supporting artisans and small-scale producers with business strategy and market expansion.",
+            description: "The crafts industry combines artisanal skill with business acumen. We help craftspeople and small producers build sustainable businesses while preserving traditional techniques.",
             featured: false
         },
         {
             id: "pharmaceuticals",
             name: "Pharmaceuticals",
             icon: "💊",
-            description: "Advancing healthcare through operational excellence and regulatory compliance expertise.",
+            description: "In a heavily regulated and mission-critical industry like pharmaceuticals, startups and established firms alike need robust systems to ensure financial compliance, operational clarity, and strategic growth. At 7 Labs Vision, we work with both medicine manufacturers and pathology labs, helping them structure their operations from the ground up and prepare for sustained scaling.",
             featured: false
         },
         {
             id: "architecture-construction",
             name: "Architecture & Construction",
             icon: "🏛️",
-            description: "Building sustainable futures through innovative design and construction management.",
+            description: "The architecture and construction industry requires precision coordination between creative vision and practical execution. We partner with firms to create systems that bridge this gap.",
             featured: false
         },
         {
@@ -81,28 +81,28 @@ function IndustriesSection() {
             id: "tourism-travel",
             name: "Tourism & Travel",
             icon: "✈️",
-            description: "Creating unforgettable experiences through customer-centric hospitality and destination management.",
+            description: "In the travel and tourism industry, efficiency and responsiveness are everything. Travel agencies often juggle complex itineraries, customer communication, and internal team management—all at once. At 7 Labs Vision, we help modern travel companies streamline their operations, automate routine tasks, and track team performance with clarity.",
             featured: false
         },
         {
             id: "corrugated-packaging",
             name: "Corrugated Packaging",
             icon: "📦",
-            description: "Revolutionizing sustainable packaging solutions for the modern supply chain.",
+            description: "Corrugated packaging manufacturers operate in a fast-paced, volume-driven environment where production efficiency, inventory accuracy, and customer order tracking are vital to success. At 7 Labs Vision, we've helped packaging manufacturers build systems that simplify operations, improve visibility, and drive profitability.",
             featured: false
         },
         {
             id: "glass-manufacturing",
             name: "Glass Manufacturing",
             icon: "🏺",
-            description: "Crafting transparency through innovative processes and sustainable materials science.",
+            description: "Glass manufacturing combines precision engineering with artistic craftsmanship. Our systems help manufacturers balance quality control with production efficiency.",
             featured: false
         },
         {
             id: "carpet-rug-manufacturing",
             name: "Carpet & Rug Manufacturing",
             icon: "🧶",
-            description: "Weaving comfort and sustainability into interior design solutions and floor coverings.",
+            description: "Carpet and rug manufacturing involves intricate processes—from loom-side production tracking to dispatch planning. We helped weaving businesses build efficient systems to monitor workflows, reduce wastage, and enable real-time visibility for decision-making.",
             featured: false
         }
     ];

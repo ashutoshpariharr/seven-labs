@@ -169,7 +169,7 @@ const Footer = () => {
               </li>
               <li className="flex items-center">
                 <Mail className="w-5 h-5 mr-3 text-blue-400" />
-                <span className="text-gray-300">admin@brnco.in</span>
+                <span className="text-gray-300">admin@sevenlabs.in</span>
               </li>
               <li className="flex items-center">
                 <Clock className="w-5 h-5 mr-3 text-blue-400" />

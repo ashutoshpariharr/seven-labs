@@ -10,6 +10,7 @@ import { BusinessOptimization, FinancialControls, InternalAudits, VirtualCFO } f
 import GAcconUI from "./components/ShowDemo";
 import IndustryDetailPage from "./components/experties/IndustryDetailPage";
 import IndustriesSection from "./components/experties/Industries";
+import ScrollToTop from "./ScrollToTop";
 
 // Main App Component
 const App = () => {
@@ -17,6 +18,7 @@ const App = () => {
     <Router>
       <div className="min-h-screen bg-white">
         <Navigation />
+        {/* <ScrollToTop /> */}
         <main className="flex-grow">
           <Routes>
             {/* Main Routes */}
