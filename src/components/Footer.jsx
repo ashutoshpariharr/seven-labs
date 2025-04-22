@@ -14,6 +14,7 @@ import {
   Award,
   CheckCircle
 } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   const fadeInUpVariants = {
@@ -104,14 +105,14 @@ const Footer = () => {
                   className="flex items-center"
                 >
                   <ArrowRight className="w-4 h-4 mr-2 text-blue-400" />
-                  <a href={
+                  <Link href={
                     item === "About Us" ? "/about" :
                       item === "Services" ? "/services" :
                         item === "Career" ? "/career" :
                           item === "Contact" ? "/contact" :
                             "/"} className="text-gray-300 hover:text-white transition-colors">
                     {item}
-                  </a>
+                  </Link>
                 </motion.li>
               ))}
             </ul>
@@ -139,9 +140,9 @@ const Footer = () => {
                   className="flex items-center"
                 >
                   <CheckCircle className="w-4 h-4 mr-2 text-blue-400" />
-                  <a href="#" className="text-gray-300 hover:text-white transition-colors">
+                  <Link href="#" className="text-gray-300 hover:text-white transition-colors">
                     {service}
-                  </a>
+                  </Link>
                 </motion.li>
               ))}
             </ul>
@@ -189,13 +190,12 @@ const Footer = () => {
         >
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="text-gray-400 text-sm">
-              {/* © 2024 7-Labs. All rights reserved. */}
               © {year} seven-Labs-vision. All rights reserved.
             </div>
             <div className="flex space-x-6 text-sm text-gray-400">
-              <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-              <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
-              <a href="#" className="hover:text-white transition-colors">Cookie Policy</a>
+              <Link href="#" className="hover:text-white transition-colors">Privacy Policy</Link>
+              <Link href="#" className="hover:text-white transition-colors">Terms of Service</Link>
+              <Link href="#" className="hover:text-white transition-colors">Cookie Policy</Link>
             </div>
           </div>
         </motion.div>

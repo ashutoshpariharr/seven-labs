@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Navigation from "./components/Navbar";
 import HeroSection from "./components/Home";
 import AboutPage from "./components/About";
@@ -18,7 +18,7 @@ const App = () => {
     <Router>
       <div className="min-h-screen bg-white">
         <Navigation />
-        {/* <ScrollToTop /> */}
+        <ScrollToTop />
         <main className="flex-grow">
           <Routes>
             {/* Main Routes */}
@@ -35,11 +35,11 @@ const App = () => {
 
 
             {/* Services Routes */}
-              <Route path="/services" element={<ServicesSection />} />
-              <Route path="/services/virtual-cfo" element={<VirtualCFO />} />
-              <Route path="/services/business-optimization" element={<BusinessOptimization />} />
-              <Route path="/services/internal-audits" element={<InternalAudits />} />
-              <Route path="/services/financial-controls" element={<FinancialControls />} />
+            <Route path="/services" element={<ServicesSection />} />
+            <Route path="/services/virtual-cfo" element={<VirtualCFO />} />
+            <Route path="/services/business-optimization" element={<BusinessOptimization />} />
+            <Route path="/services/internal-audits" element={<InternalAudits />} />
+            <Route path="/services/financial-controls" element={<FinancialControls />} />
 
             {/* 404 Route */}
             <Route path="*" element={
@@ -47,12 +47,12 @@ const App = () => {
                 <div className="text-center">
                   <h1 className="text-4xl font-bold text-gray-900 mb-4">404 - Page Not Found</h1>
                   <p className="text-gray-600 mb-8">The page you're looking for doesn't exist.</p>
-                  <a
+                  <Link
                     href="/"
                     className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
                   >
                     Go Home
-                  </a>
+                  </Link>
                 </div>
               </div>
             } />
