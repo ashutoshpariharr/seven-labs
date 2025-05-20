@@ -20,18 +20,22 @@ const ServicesPage = () => {
             icon: "📊"
         },
         {
-            title: "Internal Financial Controls",
-            description: "Establish and maintain robust financial control systems.",
-            icon: "🔒"
+            title: "Startup India",
+            description: "Startup India Offering a host of services for Startup India initiatives: DPIIT Registration, Seed Fund, program Soft, Loan application, Fundraising Consulting, Financial Modelling Business Plan",
+            icon: "https://crystalpng.com/wp-content/uploads/2025/01/startup-india-logo-gradient-circle.png"
         },
         {
             title: "Generic Services",
             description: "Customized solutions to meet your specific business needs.",
             icon: "🎯"
-        }
+        },
+        {
+            title: "E-Commerce sellers",
+            description: "Putting your accounting and reporting at ease we are here to assist all the e-commerce sellers with auditing and reporting of your e-commerce business",
+            icon: "🛒"
+        },
     ];
-
-    // Animation variants
+    
     const containerVariants = {
         hidden: { opacity: 0 },
         visible: {
@@ -70,7 +74,7 @@ const ServicesPage = () => {
                     transition={{ duration: 0.8 }}
                     className="text-center mb-16"
                 >
-                    <h1 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900">Our Services</h1>
+                    <h1 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900 mt-10">Our Services</h1>
                     <div className="w-24 h-1 bg-blue-600 mx-auto mb-8"></div>
                     <p className="text-lg text-gray-600 max-w-2xl mx-auto">
                         Comprehensive solutions tailored to elevate your business performance and drive sustainable growth.
@@ -91,8 +95,12 @@ const ServicesPage = () => {
                             whileHover="hover"
                             className="bg-white rounded-lg p-8 border border-gray-100 flex flex-col h-full"
                         >
-                            <div className="mb-6 text-4xl bg-blue-50 w-16 h-16 flex items-center justify-center rounded-full">
-                                {service.icon}
+                            <div className="mb-6 text-4xl bg-blue-50 w-16 h-16 flex items-center justify-center rounded-full overflow-hidden">
+                                {service.icon.startsWith("http") ? (
+                                    <img src={service.icon} alt={service.title} className="w-8 h-8 object-contain" />
+                                ) : (
+                                    service.icon
+                                )}
                             </div>
                             <h3 className="text-xl font-semibold mb-3 text-gray-900">{service.title}</h3>
                             <p className="text-gray-600 mb-6 flex-grow">{service.description}</p>

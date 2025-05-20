@@ -119,7 +119,7 @@ const ContactPage = () => {
           <motion.h1
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            className="text-4xl md:text-5xl font-bold mb-6"
+            className="text-4xl md:text-5xl font-bold mb-6 mt-10"
           >
             Let's Start a Conversation
           </motion.h1>
@@ -163,7 +163,7 @@ const ContactPage = () => {
                 icon: MapPin,
                 title: 'Visit Us',
                 content: '2C, 1, Indian Institute of Technology Delhi',
-                subContent: 'Delhi'
+                subContent: 'Delhi, Agra, Jaipur',
               }
             ].map((item, index) => (
               <motion.div

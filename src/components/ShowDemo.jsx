@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Play } from 'lucide-react';
 import vedioFall from "../assets/video/fall.mp4"
+import TestimonialSlider from './HomeSlider';
 
 export default function GAcconUI() {
     const [activeTab, setActiveTab] = useState('overview');
@@ -13,16 +14,16 @@ export default function GAcconUI() {
 
     return (
         <div className="max-w-6xl mx-auto px-4 py-8">
-            {/* Header */}
             <div className="text-center mb-8 mt-20">
                 <h1 className="text-4xl font-bold text-slate-800 mb-6">
                     Seven labs some demos
                 </h1>
                 <p className="text-2xl text-slate-700">See it in action now:</p>
             </div>
+            <TestimonialSlider />
 
-            {/* Tab Navigation */}
-            <div className="flex justify-center mb-8">
+
+            {/* <div className="flex justify-center mb-8">
                 <div className="flex space-x-4">
                     {tabs.map(tab => (
                         <button
@@ -47,10 +48,9 @@ export default function GAcconUI() {
                         </button>
                     ))}
                 </div>
-            </div>
+            </div> */}
 
-            {/* Content Area */}
-            <motion.div
+            {/* <motion.div
                 key={activeTab}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -58,7 +58,6 @@ export default function GAcconUI() {
                 className="relative"
             >
                 <div className="rounded-lg overflow-hidden border border-gray-200 shadow-lg">
-                    {/* Video Player Mockup */}
                     <div className="relative bg-gray-100">
                         {activeTab === 'overview' && (
                             <div className="aspect-w-16 aspect-h-9 relative overflow-hidden">
@@ -70,12 +69,6 @@ export default function GAcconUI() {
                                     loop
                                     playsInline
                                 />
-                                {/* <div className="absolute inset-0 flex items-center justify-center">
-                                    <div className="bg-slate-800 bg-opacity-70 text-white p-8 max-w-md text-center">
-                                        <h2 className="text-2xl font-bold mb-2">Bring your accounting data</h2>
-                                        <h2 className="text-2xl font-bold">into Google Sheets</h2>
-                                    </div>
-                                </div> */}
                                 <div className="absolute inset-0 flex items-center justify-center">
                                     <button className="absolute right-4 bottom-4 bg-indigo-900 rounded-full p-4 text-white shadow-lg hover:bg-indigo-800 transition-colors duration-300">
                                         <Play size={32} fill="white" />
@@ -86,7 +79,8 @@ export default function GAcconUI() {
                     </div>
 
                 </div>
-            </motion.div>
+            </motion.div> */}
+
         </div>
     );
 }

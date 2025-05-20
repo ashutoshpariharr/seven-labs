@@ -17,6 +17,7 @@ import {
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import IndustriesSection from './experties/Industries';
+import FeaturesSection from './FeaturesSection';
 
 // Hero Section Component
 const HeroSection = () => {
@@ -61,7 +62,7 @@ const HeroSection = () => {
           transition={{ duration: 0.8 }}
           className="relative z-10 max-w-3xl mx-auto"
         >
-          <h1 className="text-5xl font-bold text-gray-900 sm:text-6xl md:text-7xl leading-tight">
+          <h1 className="text-5xl font-bold text-gray-900 sm:text-6xl md:text-7xl leading-tight mt-10">
             Our
             <span className="relative mx-3">
               <span className="relative z-10 text-blue-600">Journey</span>
@@ -146,7 +147,7 @@ const OurStorySection = () => {
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
                 <div className="p-8">
                   <div className="text-white text-xl font-medium">Where it all began</div>
-                  <div className="text-white/80 mt-2">Founded in 2023</div>
+                  <div className="text-white/80 mt-2">Founded in 2021</div>
                 </div>
               </div>
             </motion.div>
@@ -173,7 +174,7 @@ const OurStorySection = () => {
                 <div>
                   <h3 className="text-xl font-semibold text-gray-900 mb-2">Our Beginning</h3>
                   <p className="text-gray-600">
-                    Started by a team of three visionaries in 2023, we set out to reimagine how businesses approach financial planning and optimization.
+                    Started by a team of three visionaries in 2021, we set out to reimagine how businesses approach financial planning and optimization.
                   </p>
                 </div>
               </motion.div>
@@ -301,7 +302,7 @@ const ValuesSection = () => {
 const MilestonesSection = () => {
   const milestones = [
     {
-      year: "2023",
+      year: "2021",
       title: "Company Founded",
       description: "Started with a team of 2 consultants in a small office in Delhi and Agra.",
       icon: <Briefcase className="w-6 h-6 text-white" />
@@ -408,7 +409,7 @@ const MilestonesSection = () => {
 };
 
 // Awards Section Component
-const AwardsSection = () => {
+export const AwardsSection = () => {
   const awards = [
     {
       title: "Business Innovation Award",
@@ -519,7 +520,8 @@ const AboutPage = () => {
       <MilestonesSection />
 
       {/* Awards Section */}
-      <AwardsSection />
+      {/* <AwardsSection /> */}
+      <FeaturesSection />
     </>
   );
 };

@@ -1,22 +1,25 @@
 import React, { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { 
-  Users, 
-  TrendingUp, 
-  Award, 
-  BookOpen, 
+import {
+  Users,
+  TrendingUp,
+  Award,
+  BookOpen,
   Coffee,
   DollarSign,
   Clock,
-  Laptop
+  Laptop,
+  IndianRupee
 } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const CareerPage = () => {
   const [selectedPosition, setSelectedPosition] = useState(null);
 
   const benefits = [
     {
-      icon: <DollarSign className="w-6 h-6" />,
+      // icon: <DollarSign className="w-6 h-6" />,
+      icon: <IndianRupee className='w-6 h-6' />,
       title: "Competitive Salary",
       description: "Industry-leading compensation packages with regular reviews"
     },
@@ -41,7 +44,7 @@ const CareerPage = () => {
     {
       title: "Senior Financial Analyst",
       department: "Finance",
-      location: "New York, NY",
+      location: "Delhi, India",
       type: "Full-time",
       description: "We're seeking an experienced Financial Analyst to join our team...",
       requirements: [
@@ -67,7 +70,7 @@ const CareerPage = () => {
     {
       title: "Risk Management Consultant",
       department: "Risk",
-      location: "Chicago, IL",
+      location: "Agra, India",
       type: "Full-time",
       description: "Join our risk management team to help clients navigate...",
       requirements: [
@@ -82,28 +85,28 @@ const CareerPage = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <motion.section 
+      <motion.section
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         className="relative bg-blue-600 text-white py-24 px-4 sm:px-6 lg:px-8"
       >
-        <motion.div 
+        <motion.div
           initial={{ y: 20 }}
           animate={{ y: 0 }}
           className="max-w-7xl mx-auto text-center"
         >
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">Join Our Team</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-6 mt-10">Join Our Team</h1>
           <p className="text-xl md:text-2xl mb-8 text-blue-100">
             Build your career with a company that's shaping the future of business finance
           </p>
-          <motion.div 
+          <motion.div
             initial={{ scale: 0.9 }}
             animate={{ scale: 1 }}
             className="flex flex-wrap justify-center gap-4 text-center"
           >
             <div className="flex items-center gap-2">
               <Users className="w-6 h-6" />
-              <span>50+ Employees</span>
+              <span>25+ Employees</span>
             </div>
             <div className="flex items-center gap-2">
               <TrendingUp className="w-6 h-6" />
@@ -122,7 +125,7 @@ const CareerPage = () => {
       </motion.section>
 
       {/* Benefits Section */}
-      <motion.section 
+      <motion.section
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         className="py-16 px-4 sm:px-6 lg:px-8 bg-white"
@@ -148,7 +151,7 @@ const CareerPage = () => {
       </motion.section>
 
       {/* Open Positions Section */}
-      <motion.section 
+      <motion.section
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         className="py-16 px-4 sm:px-6 lg:px-8"
@@ -164,7 +167,7 @@ const CareerPage = () => {
                 transition={{ delay: index * 0.1 }}
                 className="bg-white rounded-lg shadow-lg overflow-hidden"
               >
-                <div 
+                <div
                   className="p-6 cursor-pointer"
                   onClick={() => setSelectedPosition(selectedPosition === index ? null : index)}
                 >
@@ -191,7 +194,7 @@ const CareerPage = () => {
                       Apply Now
                     </motion.button>
                   </div>
-                  
+
                   <AnimatePresence>
                     {selectedPosition === index && (
                       <motion.div
@@ -218,7 +221,7 @@ const CareerPage = () => {
       </motion.section>
 
       {/* CTA Section */}
-      <motion.section 
+      <motion.section
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         className="bg-blue-600 text-white py-16 px-4 sm:px-6 lg:px-8"
@@ -228,13 +231,15 @@ const CareerPage = () => {
           <p className="text-xl mb-8 text-blue-100">
             Take the first step towards an exciting career in business finance
           </p>
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="bg-white text-blue-600 px-8 py-3 rounded-full font-medium text-lg shadow-lg"
-          >
-            View All Positions
-          </motion.button>
+          <Link to="https://www.linkedin.com/company/7-labs-vision/" target='_black' >
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-white text-blue-600 px-8 py-3 rounded-full font-medium text-lg shadow-lg"
+            >
+              View All Positions
+            </motion.button>
+          </Link>
         </div>
       </motion.section>
     </div>
