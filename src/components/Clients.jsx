@@ -41,7 +41,7 @@ const testimonials = [
     }
 ];
 
-const ClientSay = () => {
+const Client = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [direction, setDirection] = useState(0);
     const [isPaused, setIsPaused] = useState(false);
@@ -187,8 +187,8 @@ const ClientSay = () => {
                                 </motion.div>
                             </AnimatePresence>
 
-                            {/* Navigation buttons */}
-                            <div className="absolute bottom-4 left-0 right-0 flex justify-center space-x-2">
+                            {/* Dot Indicators */}
+                            <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-3 z-10">
                                 {testimonials.map((_, index) => (
                                     <motion.button
                                         key={index}
@@ -196,28 +196,31 @@ const ClientSay = () => {
                                             setDirection(index > currentIndex ? 1 : -1);
                                             setCurrentIndex(index);
                                         }}
-                                        className={`w-2 h-2 rounded-full ${index === currentIndex ? 'bg-blue-600' : 'bg-gray-300'}`}
-                                        whileHover={{ scale: 1.5 }}
+                                        aria-label={`Go to testimonial ${index + 1}`}
+                                        className={`w-3 h-3 rounded-full transition-colors ${index === currentIndex ? 'bg-blue-600 scale-110' : 'bg-gray-300 hover:bg-blue-400'
+                                            }`}
+                                        whileHover={{ scale: 1.3 }}
                                         transition={{ duration: 0.2 }}
                                     />
                                 ))}
                             </div>
 
-                            {/* Arrow buttons */}
+                            {/* Arrow Navigation Buttons */}
                             <button
                                 onClick={prevSlide}
-                                className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white rounded-full p-2 text-blue-600 shadow-md transition-all"
+                                className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white text-blue-600 hover:bg-blue-100 border border-gray-200 rounded-full p-3 shadow-md transition-all duration-200 z-10"
                                 aria-label="Previous testimonial"
                             >
-                                <ChevronLeft size={20} />
+                                <ChevronLeft size={22} />
                             </button>
                             <button
                                 onClick={nextSlide}
-                                className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white rounded-full p-2 text-blue-600 shadow-md transition-all"
+                                className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white text-blue-600 hover:bg-blue-100 border border-gray-200 rounded-full p-3 shadow-md transition-all duration-200 z-10"
                                 aria-label="Next testimonial"
                             >
-                                <ChevronRight size={20} />
+                                <ChevronRight size={22} />
                             </button>
+
                         </div>
                     </div>
                 </div>
@@ -226,4 +229,4 @@ const ClientSay = () => {
     );
 };
 
-export default ClientSay;
+export default Client;

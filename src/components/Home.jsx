@@ -6,7 +6,8 @@ import { Link } from 'react-router-dom';
 import TestimonialSlider from './HomeSlider';
 import { useRef, useEffect } from 'react';
 import ServicesPage from './Services';
-import ClientSay from './clientSay';
+import Client from './Clients';
+// import ClientSay from './clientSay';
 
 const HeroServices = () => {
 
@@ -566,7 +567,8 @@ const HeroSection = () => {
         </div>
       </motion.div>
       <HeroServices />
-      <ClientSay />
+      {/* <ClientSay /> */}
+      <Client />
     </>
   );
 };

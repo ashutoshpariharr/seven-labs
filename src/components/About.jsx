@@ -188,7 +188,7 @@ const OurStorySection = () => {
                 <div>
                   <h3 className="text-xl font-semibold text-gray-900 mb-2">Growth & Expansion</h3>
                   <p className="text-gray-600">
-                    By 2024, we had expanded to serve clients across many countries, with a team of over 100 dedicated professionals committed to excellence.
+                    By 2024, we had expanded to serve clients across many countries, with a team of over 25 dedicated professionals committed to excellence.
                   </p>
                 </div>
               </motion.div>
