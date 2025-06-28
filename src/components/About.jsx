@@ -307,12 +307,12 @@ const MilestonesSection = () => {
       description: "Started with a team of 2 consultants in a small office in Delhi and Agra.",
       icon: <Briefcase className="w-6 h-6 text-white" />
     },
-    {
-      year: "2024",
-      title: "First International Client",
-      description: "Expanded services to Europe with our first multinational client.",
-      icon: <Globe className="w-6 h-6 text-white" />
-    },
+    // {
+    //   year: "2024",
+    //   title: "First International Client",
+    //   description: "Expanded services to Europe with our first multinational client.",
+    //   icon: <Globe className="w-6 h-6 text-white" />
+    // },
     {
       year: "2024",
       title: "50+ Client Milestone",
