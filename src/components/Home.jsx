@@ -15,32 +15,38 @@ const HeroServices = () => {
     {
       title: "Virtual CFO Services",
       description: "Strategic financial planning and management for startups and growing businesses.",
-      icon: "💼"
+      icon: "💼",
+      path: "/services/virtual-cfo"
     },
     {
       title: "Business Process Optimisation",
       description: "Streamline operations and improve efficiency across your organization.",
-      icon: "⚡"
+      icon: "⚡",
+      path: "/services/business-optimization"
     },
     {
       title: "Internal Audits",
       description: "Comprehensive internal audit services to ensure compliance and identify improvements.",
-      icon: "📊"
+      icon: "📊",
+      path: "/services/internal-audits"
     },
     {
       title: "Startup India",
       description: "Startup India Offering a host of services for Startup India initiatives: DPIIT Registration, Seed Fund, program Soft, Loan application, Fundraising Consulting, Financial Modelling Business Plan",
-      icon: "https://crystalpng.com/wp-content/uploads/2025/01/startup-india-logo-gradient-circle.png"
+      icon: "https://crystalpng.com/wp-content/uploads/2025/01/startup-india-logo-gradient-circle.png",
+      path: "#"
     },
     {
       title: "Generic Services",
       description: "Customized solutions to meet your specific business needs.",
-      icon: "🎯"
+      icon: "🎯",
+      path: "#"
     },
     {
       title: "E-Commerce sellers",
       description: "Putting your accounting and reporting at ease we are here to assist all the e-commerce sellers with auditing and reporting of your e-commerce business",
-      icon: "🛒"
+      icon: "🛒",
+      path: "/services"
     },
   ];
 
@@ -110,19 +116,21 @@ const HeroServices = () => {
                 </div>
                 <h3 className="text-xl font-semibold mb-3 text-gray-900">{service.title}</h3>
                 <p className="text-gray-600 mb-6 flex-grow">{service.description}</p>
-                <motion.button
-                  whileHover={{ x: 5 }}
-                  className="mt-auto flex items-center text-blue-600 font-medium group"
-                >
-                  Learn More
-                  <motion.span
-                    initial={{ x: 0 }}
+                <Link to={service.path}>
+                  <motion.button
                     whileHover={{ x: 5 }}
-                    transition={{ duration: 0.2 }}
+                    className="mt-auto flex items-center text-blue-600 font-medium group"
                   >
-                    <ChevronRight className="ml-1 h-4 w-4 group-hover:text-blue-800" />
-                  </motion.span>
-                </motion.button>
+                    Learn More
+                    <motion.span
+                      initial={{ x: 0 }}
+                      whileHover={{ x: 5 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <ChevronRight className="ml-1 h-4 w-4 group-hover:text-blue-800" />
+                    </motion.span>
+                  </motion.button>
+                </Link>
               </motion.div>
             ))}
           </motion.div>
